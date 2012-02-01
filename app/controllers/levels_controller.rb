@@ -6,6 +6,9 @@ class LevelsController < ApplicationController
   end
 
   def created
+    levelOb = parse(params, $level_spec)
+    Level.create(levelOb)
+    render 'index'
   end
 
   def show

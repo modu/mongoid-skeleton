@@ -1,12 +1,12 @@
 MongoidSkeleton::Application.routes.draw do
   
-  match 'levels/index',         :to => 'levels#index' ,       :via => :get
-  match 'levels/create',        :to => 'levels#create',       :via => :get  # show the form for creating level
-  match 'levels/created',       :to => 'levels#created',      :via => :post  # receives and creates new level
-  match 'levels/show',          :to => 'levels#show',         :via => :get   # show existing levels
-  match 'levels/load/(:id)',            :to => 'levels#load',         :via => :get   # show existing levels
-  match 'levels/load/updated',          :to => 'levels#updated',      :via => :post   # receive and update level
-  match 'levels/xml/(:id)',             :to => 'levels#xml',           :via => :get   # show existing levels
+  match 'mathfact/levels/index',         :to => 'levels#index' ,       :via => :get
+  match 'mathfact/levels/create',        :to => 'levels#create',       :via => :get  # show the form for creating level
+  match 'mathfact/levels/created',       :to => 'levels#created',      :via => :post  # receives and creates new level
+  match 'mathfact/levels/show',          :to => 'levels#show',         :via => :get   # show existing levels
+  match 'mathfact/levels/load/(:id)',            :to => 'levels#load',         :via => :get   # show existing levels
+  match 'mathfact/levels/load/updated',          :to => 'levels#updated',      :via => :post   # receive and update level
+  match 'mathfact/levels/xml/(:id)',             :to => 'levels#xml',          :via => :get   # show existing levels
   
   
   

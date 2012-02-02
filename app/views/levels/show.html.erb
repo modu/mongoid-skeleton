@@ -1,2 +1,5 @@
-<h1>Levels#show</h1>
-<p>Find me in app/views/levels/show.html.erb</p>
+<ul>
+<% @lc.each do |t| %>
+ <li><a href="/mathfact/levels/load/<%= t[:game]['levelName'] %>"> <%= t[:game]['levelName'] %> </a></li>	
+<%end%>
+</ul>

@@ -7,19 +7,19 @@
 <%= text_field_tag 'levelName', nil,:placeholder => 'enter level name' %>
 </br></br>
 <%= label_tag 'sequence'%> 
-</br>
+</br></br>
 <%= radio_button_tag 'sequence', 'naive'  %>    naive </br>
 <%= radio_button_tag 'sequence', 'random once'  %>    random once</br>
 <%= radio_button_tag 'sequence', 'random'  %>    random</br>
 <%= radio_button_tag 'sequence', 'bkt'  %>    bkt</br>
 <%= radio_button_tag 'sequence', 'dtree'  %>    dtree</br>
 
+<%= label_tag 'question'%> 
+<%= label_tag 'answer '%> 
+
 <div id=item1  class="itemclone" >
-  	<%= label_tag 'question '%> 
-		<%= text_field_tag 'question', nil,:placeholder => 'enter question' %>
-</br>
-		<%= label_tag 'answer '%> 
-		<%= text_field_tag 'answer', nil,:placeholder => 'enter answer' %>
+		<%= text_field_tag 'question1', nil,:placeholder => 'enter question' %>
+		<%= text_field_tag 'answer1', nil,:placeholder => 'enter answer' %>
 </div>
 
 <div id="itembuttondiv"  >
@@ -28,14 +28,14 @@
 </div>
 
 </br>
-<%= label_tag 'kcs'%>
+<%= label_tag 'kcs'%></br></br>
 <div id=kc1  class= "kcclone" >
-		<%=text_field_tag 'kcname', nil, :placeholder => 'Enter kcname ' %>   		
-		<%=text_field_tag 'L',   nil,   :placeholder => 'Enter L '   %>  
-		<%=text_field_tag 'G',  nil,  :placeholder => 'Enter G'  %>  
-		<%=text_field_tag 'T',     nil,     :placeholder => 'Enter T' %>
-		<%=text_field_tag 'S', nil, :placeholder => 'Enter S' %>   		
-		<%=text_field_tag 'itemnumbers',   nil,   :placeholder => 'Enter itemnumbers'   %>  	  																		      
+		<%=text_field_tag 'kcname1', nil, :placeholder => 'Enter kcname ' %>   		
+		<%=text_field_tag 'L1',   nil,   :placeholder => 'Enter L '   %>  
+		<%=text_field_tag 'G1',  nil,  :placeholder => 'Enter G'  %>  
+		<%=text_field_tag 'T1',     nil,     :placeholder => 'Enter T' %>
+		<%=text_field_tag 'S1', nil, :placeholder => 'Enter S' %>   		
+		<%=text_field_tag 'itemnumbers1',   nil,   :placeholder => 'Enter itemnumbers'   %>  	  																		      
 </div>
 <div id="kcbuttondiv"  >
 <input type="button" id="kcsbuttonadd" value="Add" /> 

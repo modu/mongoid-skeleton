@@ -1,5 +1,22 @@
 MongoidSkeleton::Application.routes.draw do
+  match 'mathfact/experiments/index',         :to => 'experiments#index' ,       :via => :get
+  match 'mathfact/experiments/create',        :to => 'experiments#create',       :via => :get  # show the form for creating sequences
+  match 'mathfact/experiments/created',       :to => 'experiments#created',      :via => :post  # receives and creates new sequences
+  match 'mathfact/experiments/show',          :to => 'experiments#show',         :via => :get   # show existing sequences
+  match 'mathfact/experiments/load/(:id)',            :to => 'experiments#load',         :via => :get   # show existing sequences
+  match 'mathfact/experiments/load/updated',          :to => 'experiments#updated',      :via => :post   # receive and update sequences
+  match 'mathfact/experiments/xml/(:id)',             :to => 'experiments#xml',          :via => :get   # show existing sequences
   
+
+
+  match 'mathfact/sequences/index',         :to => 'sequences#index' ,       :via => :get
+  match 'mathfact/sequences/create',        :to => 'sequences#create',       :via => :get  # show the form for creating sequences
+  match 'mathfact/sequences/created',       :to => 'sequences#created',      :via => :post  # receives and creates new sequences
+  match 'mathfact/sequences/show',          :to => 'sequences#show',         :via => :get   # show existing sequences
+  match 'mathfact/sequences/load/(:id)',            :to => 'sequences#load',         :via => :get   # show existing sequences
+  match 'mathfact/sequences/load/updated',          :to => 'sequences#updated',      :via => :post   # receive and update sequences
+  match 'mathfact/sequences/xml/(:id)',             :to => 'sequences#xml',          :via => :get   # show existing sequences
+
   match 'mathfact/levels/index',         :to => 'levels#index' ,       :via => :get
   match 'mathfact/levels/create',        :to => 'levels#create',       :via => :get  # show the form for creating level
   match 'mathfact/levels/created',       :to => 'levels#created',      :via => :post  # receives and creates new level

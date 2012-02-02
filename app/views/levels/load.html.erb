@@ -1,2 +1,72 @@
-<h1>Levels#load</h1>
-<p>Find me in app/views/levels/load.html.erb</p>
+<%=    @levelOb[:game]["levelName"]   %>
+
+
+
+<form action="updated" method="post">
+<%= label_tag 'change' %>
+<%= radio_button_tag 'change', 'new'%> new <br>
+<%= radio_button_tag 'change', 'update'%> update <br>
+<%= radio_button_tag 'change', 'remove'%> remove <br>
+
+<%= label_tag 'Level Name'%> 
+
+<%= text_field_tag 'levelName', @levelOb[:game]["levelName"],:placeholder => 'enter level name' %>
+</br></br>
+<%= label_tag 'sequence'%> 
+</br>
+<%= radio_button_tag 'sequence', 'naive', @levelOb[:game]["sequence"] == 'naive'  %>    naive </br>
+<%= radio_button_tag 'sequence', 'random once', @levelOb[:game]["sequence"] == 'random once'  %>    random once</br>
+<%= radio_button_tag 'sequence', 'random', @levelOb[:game]["sequence"] == 'random'   %>    random</br>
+<%= radio_button_tag 'sequence', 'bkt', @levelOb[:game]["sequence"] == 'bkt'   %>    bkt</br>
+<%= radio_button_tag 'sequence', 'dtree', @levelOb[:game]["sequence"] == 'dtree'   %>    dtree</br>
+
+<%= label_tag 'question'%> 
+<%= label_tag 'answer '%> 
+
+<% unless @levelOb[:game]['items'].nil? %>
+   <% @levelOb[:game]["items"]["item"].each_index do |i| %>
+    <div id=item<%= i+1 %>  class="itemclone" >
+		<%= text_field_tag 'question'+(i+1).to_s, @levelOb[:game]["items"]["item"][i]["question"],:placeholder => 'enter question' %>
+	  <%= text_field_tag 'answer'+(i+1).to_s, @levelOb[:game]['items']['item'][i]['answer'],:placeholder => 'enter answer' %>
+    </div>
+   <% end %>
+<% end %>
+<div id="itembuttondiv"  >
+<input type="button" id="itembuttonadd" value="Add" /> 
+<input type="button" id="itembuttondelete" value="Remove"  /> 
+</div>
+
+</br>
+<%= label_tag 'kcs'%>
+
+<% unless @levelOb[:game]['kcs'].nil? %>
+<% @levelOb[:game]['kcs']['kc'].each_index do |i| %>
+    <div id=kc<%= i+1 %>  class= "kcclone" >
+    		<%=text_field_tag 'kcname'+(i+1).to_s, @levelOb[:game]['kcs']['kc'][i]['kcname'], :placeholder => 'Enter kcname ' %>   		
+    		<%=text_field_tag 'L'+(i+1).to_s,   @levelOb[:game]['kcs']['kc'][i]['L'],   :placeholder => 'Enter L '   %>    
+    		<%=text_field_tag 'G'+(i+1).to_s,  @levelOb[:game]['kcs']['kc'][i]['G'],  :placeholder => 'Enter G'  %>  
+    		<%=text_field_tag 'T'+(i+1).to_s,     @levelOb[:game]['kcs']['kc'][i]['T'],     :placeholder => 'Enter T' %>
+    		<%=text_field_tag 'S'+(i+1).to_s, @levelOb[:game]['kcs']['kc'][i]['S'], :placeholder => 'Enter S' %>   		
+    		<%=text_field_tag 'itemnumbers'+(i+1).to_s,   @levelOb[:game]['kcs']['kc'][i]['itemnumbers'],   :placeholder => 'Enter itemnumbers'   %>  	  																		      
+    </div>
+<% end %>
+<% end %>
+
+<div id="kcbuttondiv"  >
+<input type="button" id="kcsbuttonadd" value="Add" /> 
+<input type="button" id="kcsbuttondelete" value="Remove"  /> 
+</div>
+</br></br>
+<%= label_tag 'Bin Sizes'%> 
+
+<%= text_field_tag 'binsizes', @levelOb[:game]['binsizes'].join(','), :placeholder => 'enter bin sizes' %>
+
+</br>
+
+<input id="level_submit" name="commit" type="submit" value="Create Level!" />
+
+
+</form >
+
+
+

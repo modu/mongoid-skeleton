@@ -1,0 +1,6 @@
+<ul>
+	<%= binding.pry%>
+<% @sq.each do |t| %>
+ <li><a href="/mathfact/sequences/load/<%= t[:levelSequence]['sequenceName'] %> "> <%= t[:levelSequence]['sequenceName'] %> </a></li>	
+<%end%>
+</ul>

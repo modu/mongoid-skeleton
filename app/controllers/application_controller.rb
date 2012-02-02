@@ -56,12 +56,28 @@ class MultipleParseFunction < ParseFunction
       i = 2
       while hash.has_key?(key_start+i.to_s) do
          val = hash.fetch(key_start+i.to_s)
-         ans << val unless val.empty?
+         ans << val unless val.empty? or val.nil?
          i = i + 1
       end
       return ans
    end
 end
+
+class ArrayMultipleParseFunction < ParseFunction
+  attr_accessor :key_start
+  def initialize(key_start)
+    @key_start = key_start
+  end
+  def parse(hash)
+    res = MultipleParseFunction.new(@key_start).parse(hash)
+    ans = []
+    res.each do |one|
+      putin = one.split(',')
+      ans << putin unless putin.nil? 
+    end
+    return ans
+  end  
+end  
 
 class CollationParseFunction < ParseFunction
   attr_accessor :keys
@@ -71,9 +87,11 @@ class CollationParseFunction < ParseFunction
   def parse(hash)
     result = {}
     @parse_functions.each do |key, parse_function|
-      result[key] = parse_function.parse(hash)
+      v = parse_function.parse(hash)
+      result[key] = v if not v.nil?
     end
-    return result
+    return result if not result.empty?
+    return nil
   end  
 end
 
@@ -89,9 +107,9 @@ class CollationMultipleParseFunction < ParseFunction
       result1[key] = m.parse(hash) 
     end
     result2 = []
-    return {} if result1[keys[0]].nil?
+    return nil if result1[keys[0]].nil?
     l = result1[keys[0]].size
-    (0..l).each do |num|
+    (0...l).each do |num|
       one_hash = {}
       keys.each do |key|
         one_hash[key] = result1[key][num]
@@ -106,14 +124,37 @@ $level_spec = [
      [:game, CollationParseFunction.new([
        [:levelName, StringParseFunction.new('levelName')],
        [:sequence, StringParseFunction.new('sequence')],
-       [:item, CollationParseFunction.new([
-         [:question, MultipleParseFunction.new('question')],
-         [:answer, MultipleParseFunction.new('answer')]
+       [:items, CollationParseFunction.new([
+         [:item, CollationMultipleParseFunction.new(['question','answer'])]
        ])],
-       [:kcs, CollationMultipleParseFunction.new(['kc'])],
+       [:kcs, CollationParseFunction.new([
+         [:kc, CollationMultipleParseFunction.new(['kcname', 'L', 'G', 'T', 'S', 'itemnumbers'])]
+
+=begin
+         [:kc,  CollationParseFunction.new([
+           [:kcname, MultipleParseFunction.new('kcname')],
+           [:L, MultipleParseFunction.new('L')],
+           [:G, MultipleParseFunction.new('G')],
+           [:T, MultipleParseFunction.new('T')],
+           [:S, MultipleParseFunction.new('S')],
+           [:itemnumbers, ArrayMultipleParseFunction.new('itemnumbers')]
+         ])]
+=end
+
+       ])],
        [:binsizes, ArrayParseFunction.new('binsizes')]
        ])]     
   ]
+
+$sequence_spec = [
+       [:levelSequence, CollationParseFunction.new([
+            [:creatorName, StringParseFunction.new('CreatorName')],
+            [:sequenceName, StringParseFunction.new('sequenceName')],
+            [:levels, CollationParseFunction.new([
+              [:level, StringParseFunction.new('level')]
+            ])]
+         ])]
+    ]
 
 
 def parse(input_hash, parse_spec)

@@ -1,0 +1,26 @@
+
+<form action="updated" method="post">
+
+	<%= label_tag 'change' %>
+	<%= radio_button_tag 'change', 'new'%> new <br>
+	<%= radio_button_tag 'change', 'update'%> update <br>
+	<%= radio_button_tag 'change', 'remove'%> remove <br>
+
+	<%= label_tag 'Creators Name ' %> 
+
+	<%= text_field_tag 'CreatorName', @seqOb[:levelSequence]['creatorName'],:placeholder => 'enter creator\'s name' %>
+	</br>
+	<%= label_tag 'Sequence Name'%> 
+
+	<%= text_field_tag 'sequenceName', @seqOb[:levelSequence]['sequenceName'],:placeholder => 'enter sequence\'s name' %>
+</br>
+<% @level_names.each_index do |t|%>
+
+<%= select 'level', nil,  @levelNames,{:prompt=>'select level', :selected => @level_names[t]}%> <br>
+<%end%>
+</br>
+
+<input type =submit value="updat!">
+
+</form>
+	

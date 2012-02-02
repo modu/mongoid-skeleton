@@ -1,2 +1,5 @@
-<h1>Experiments#show</h1>
-<p>Find me in app/views/experiments/show.html.erb</p>
+<ul>
+<% @experiment_names.each do |t| %>
+ <li><a href="/mathfact/experiments/load/<%= t %> "> <%= t %> </a></li>	
+<%end%>
+</ul>

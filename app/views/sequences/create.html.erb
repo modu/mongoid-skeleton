@@ -1,16 +1,10 @@
-
-
-
-
 <form action="created" method="post">
 
-	<%= label_tag 'Creators Name ' %> 
-
-	<%= text_field_tag 'CreatorName', nil,:placeholder => 'enter creator\'s name' %>
-	</br>
-	<%= label_tag 'Sequence Name'%> 
-
-	<%= text_field_tag 'sequenceName', nil,:placeholder => 'enter sequence\'s name' %>
+<%= label_tag 'Creators Name ' %> 
+<%= text_field_tag 'CreatorName', nil,:placeholder => 'enter creator\'s name' %>
+</br>
+<%= label_tag 'Sequence Name'%> 
+<%= text_field_tag 'sequenceName', nil,:placeholder => 'enter sequence\'s name' %>
 </br>
 
 <%= select 'level', nil, @levelNames%> <br>
@@ -24,8 +18,5 @@
 <%= select 'level', nil, @levelNames%> <br>
 <%= select 'level', nil, @levelNames%> <br>
 
-
 </br>
-
-
-	<input name="commit" type="submit" value="Create Sequence!" />
+<input name="commit" type="submit" value="Create Sequence!" />

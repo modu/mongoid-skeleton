@@ -156,7 +156,6 @@ $sequence_spec = [
          ])]
     ]
 
-
 def parse(input_hash, parse_spec)
    ans = Hash.new
    parse_spec.each do |field, parse_ob|

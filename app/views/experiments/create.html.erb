@@ -1,2 +1,19 @@
-<h1>Experiments#create</h1>
-<p>Find me in app/views/experiments/create.html.erb</p>
+<form action="created" method="post">
+
+<%= label_tag 'Experiment Name'%> 
+<%= text_field_tag 'experimentName', nil,:placeholder => 'enter experiment\'s name' %>
+</br>
+
+<%= select 'sequence', nil, @sequenceNames%> <br>
+<%= select 'sequence', nil, @sequenceNames%> <br>
+<%= select 'sequence', nil, @sequenceNames%> <br>
+<%= select 'sequence', nil, @sequenceNames%> <br>
+<%= select 'sequence', nil, @sequenceNames%> <br>
+<%= select 'sequence', nil, @sequenceNames%> <br>
+<%= select 'sequence', nil, @sequenceNames%> <br>
+<%= select 'sequence', nil, @sequenceNames%> <br>
+<%= select 'sequence', nil, @sequenceNames%> <br>
+<%= select 'sequence', nil, @sequenceNames%> <br>
+
+</br>
+<input name="commit" type="submit" value="Create Sequence!" />
